@@ -32,6 +32,8 @@ const registration = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         const token = jsonwebtoken_1.default.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "3d" });
         res.cookie("auth_token", token, {
             httpOnly: true, // cookies only for the server
+            sameSite: "none",
+            secure: true,
             maxAge: 3 * 24 * 60 * 60 * 1000, // 3 days in miliseconds
         });
         res.status(200).send({ username: user.username, userId: user._id });
@@ -59,6 +61,8 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         const token = jsonwebtoken_1.default.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "3d" });
         res.cookie("auth_token", token, {
             httpOnly: true, // cookies only for the server
+            sameSite: "none",
+            secure: true,
             maxAge: 3 * 24 * 60 * 60 * 1000, // 3 days in miliseconds
         });
         res.status(200).send({ username: user.username, userId: user._id });
