@@ -17,7 +17,7 @@ const port = process.env.PORT || 3000;
 const app = (0, express_1.default)();
 const httpServer = (0, http_1.createServer)(app);
 app.use((0, cors_1.default)({
-    origin: process.env.FRONTEND_URL, credentials: true, methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    origin: process.env.FRONTEND_URL || "*", credentials: true, methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     allowedHeaders: 'Origin,X-Requested-With,Content-Type,Accept,Authorization',
 }));
 app.use(express_1.default.json());
